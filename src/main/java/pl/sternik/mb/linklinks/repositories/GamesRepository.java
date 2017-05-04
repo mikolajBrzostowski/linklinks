@@ -1,9 +1,7 @@
 package pl.sternik.mb.linklinks.repositories;
 
 import java.util.List;
-
 import pl.sternik.mb.linklinks.entities.Game;
-import pl.sternik.mb.linklinks.entities.Moneta;
 
 
 public interface GamesRepository {

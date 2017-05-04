@@ -2,9 +2,7 @@ package pl.sternik.mb.linklinks.services;
 
 import java.util.List;
 import java.util.Optional;
-
 import pl.sternik.mb.linklinks.entities.Game;
-import pl.sternik.mb.linklinks.entities.Moneta;
 
 
 public interface KlaserServiceGames {

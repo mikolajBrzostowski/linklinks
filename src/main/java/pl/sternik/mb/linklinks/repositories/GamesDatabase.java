@@ -7,10 +7,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-
 import pl.sternik.mb.linklinks.entities.Game;
 import pl.sternik.mb.linklinks.entities.LanguageVersion;
-import pl.sternik.mb.linklinks.entities.Moneta;
 import pl.sternik.mb.linklinks.entities.PlatfromVersion;
 import pl.sternik.mb.linklinks.entities.Status;
 
@@ -29,7 +27,7 @@ public class GamesDatabase implements GamesRepository {
         m.setDescription("Nowa gra");
         m.setDateOfAcquisition(new Date());
         m.setLanguageVersion(LanguageVersion.POLISH);
-        m.setStatus(Status.NOWA);
+        m.setStatus(Status.NEW);
         m.setPlatformVersion(PlatfromVersion.PS4);   
         baza[0] = m;
         
@@ -39,7 +37,7 @@ public class GamesDatabase implements GamesRepository {
         m.setDescription("Używana w bardzo dobrym stanie");
         m.setDateOfAcquisition(new Date());
         m.setLanguageVersion(LanguageVersion.ENGLISH);
-        m.setStatus(Status.DO_SPRZEDANIA);
+        m.setStatus(Status.TOSELL);
         m.setPlatformVersion(PlatfromVersion.XBOXONE);   
         baza[2] = m;
 

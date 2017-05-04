@@ -13,9 +13,7 @@ public class Game {
 	private Long catalogNumber;
 //	@NotNull
 	private String name;	
-
-
-	//	@NotNull
+//	@NotNull
 	private Long marketValue;	
 //	@Size(min=2, max=30, message = "{Size.moneta.opis}")
 //	@Size(min=2, max=30, message = "Opis should be in the range [{min}...{max}]")
@@ -25,9 +23,9 @@ public class Game {
 //	@NotEmpty
 	private LanguageVersion languageVersion;
 //	@NotNull
-	private Status status;
-//	@NotNull
 	private PlatfromVersion platformVersion;
+//	@NotNull
+	private Status status;
 	
 	
 	
@@ -80,32 +78,32 @@ public class Game {
 	public void setLanguageVersion(LanguageVersion languageVersion) {
 		this.languageVersion = languageVersion;
 	}
-	public Status getStatus() {
-		return status;
-	}
-	public void setStatus(Status status) {
-		this.status = status;
-	}
 	public PlatfromVersion getPlatformVersion() {
 		return platformVersion;
 	}
 	public void setPlatformVersion(PlatfromVersion platformVersion) {
 		this.platformVersion = platformVersion;
 	}
-	
+
+	public Status getStatus() {
+		return status;
+	}
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((catalogNumber == null) ? 0 : catalogNumber.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((marketValue == null) ? 0 : marketValue.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((dateOfAcquisition == null) ? 0 : dateOfAcquisition.hashCode());
 		result = prime * result + ((languageVersion == null) ? 0 : languageVersion.hashCode());
 		result = prime * result + ((platformVersion == null) ? 0 : platformVersion.hashCode());
-		result = prime * result + ((catalogNumber == null) ? 0 : catalogNumber.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}

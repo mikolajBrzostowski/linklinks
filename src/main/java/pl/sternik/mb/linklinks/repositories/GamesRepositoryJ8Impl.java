@@ -8,10 +8,8 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
 import pl.sternik.mb.linklinks.entities.Game;
 import pl.sternik.mb.linklinks.entities.LanguageVersion;
-import pl.sternik.mb.linklinks.entities.Moneta;
 import pl.sternik.mb.linklinks.entities.PlatfromVersion;
 import pl.sternik.mb.linklinks.entities.Status;
 
@@ -22,12 +20,12 @@ public class GamesRepositoryJ8Impl implements GamesRepository {
 
     private List<Game> games = new ArrayList<Game>() {
         {
-            add(Game.produceGame(1L, "game1", 100L, "First game", new Date(), LanguageVersion.POLISH, PlatfromVersion.PS3, Status.NOWA));
-            add(Game.produceGame(2L, "game2", 110L, "Second game", new Date(), LanguageVersion.ENGLISH, PlatfromVersion.PS3, Status.DO_SPRZEDANIA));
-            add(Game.produceGame(3L, "game3", 120L, "Third game", new Date(), LanguageVersion.GERMAN, PlatfromVersion.PS3, Status.DUBLET));
-            add(Game.produceGame(4L, "game4", 130L, "Forth game", new Date(), LanguageVersion.RUSSIAN, PlatfromVersion.PS3, Status.DO_SPRZEDANIA));
-            add(Game.produceGame(5L, "game5", 140L, "Fifth game", new Date(), LanguageVersion.ENGLISH, PlatfromVersion.PS3, Status.NOWA));
-            add(Game.produceGame(6L, "game6", 150L, "Sixth game", new Date(), LanguageVersion.POLISH, PlatfromVersion.PS3, Status.NOWA));
+            add(Game.produceGame(1L, "game1", 100L, "First game", new Date(), LanguageVersion.POLISH, PlatfromVersion.PS3, Status.NEW));
+            add(Game.produceGame(2L, "game2", 110L, "Second game", new Date(), LanguageVersion.ENGLISH, PlatfromVersion.PS3, Status.TOSELL));
+            add(Game.produceGame(3L, "game3", 120L, "Third game", new Date(), LanguageVersion.GERMAN, PlatfromVersion.PS3, Status.DUPLICATE));
+            add(Game.produceGame(4L, "game4", 130L, "Forth game", new Date(), LanguageVersion.RUSSIAN, PlatfromVersion.PS3, Status.TOSELL));
+            add(Game.produceGame(5L, "game5", 140L, "Fifth game", new Date(), LanguageVersion.ENGLISH, PlatfromVersion.PS3, Status.NEW));
+            add(Game.produceGame(6L, "game6", 150L, "Sixth game", new Date(), LanguageVersion.POLISH, PlatfromVersion.PS3, Status.NEW));
         }
     };
 

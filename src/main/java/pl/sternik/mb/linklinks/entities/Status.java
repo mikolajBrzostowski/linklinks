@@ -3,12 +3,12 @@ package pl.sternik.mb.linklinks.entities;
 
 public enum Status {
     
-    NOWA("Nowa"), 
-    DO_SPRZEDANIA("Do sprzedania"),
-    DUBLET("Dublet");
+    NEW("New"), 
+    TOSELL("To sell"),
+    DUPLICATE("Duplicate");
     
     
-    public static final Status[] ALL = { NOWA, DO_SPRZEDANIA, DUBLET };
+    public static final Status[] ALL = { NEW, TOSELL, DUPLICATE };
     
     
     private final String name;

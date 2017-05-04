@@ -7,15 +7,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
 import pl.sternik.mb.linklinks.entities.Game;
-import pl.sternik.mb.linklinks.entities.Moneta;
 import pl.sternik.mb.linklinks.repositories.GameAlreadyExistsException;
 import pl.sternik.mb.linklinks.repositories.GamesRepository;
-import pl.sternik.mb.linklinks.repositories.MonetaAlreadyExistsException;
-import pl.sternik.mb.linklinks.repositories.MonetyRepository;
 import pl.sternik.mb.linklinks.repositories.NoSuchGameException;
-import pl.sternik.mb.linklinks.repositories.NoSuchMonetaException;
 
 
 @Service

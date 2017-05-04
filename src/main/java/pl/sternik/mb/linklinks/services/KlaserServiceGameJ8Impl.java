@@ -9,16 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-
 import pl.sternik.mb.linklinks.entities.Game;
-import pl.sternik.mb.linklinks.entities.Moneta;
 import pl.sternik.mb.linklinks.entities.Status;
 import pl.sternik.mb.linklinks.repositories.GameAlreadyExistsException;
 import pl.sternik.mb.linklinks.repositories.GamesRepository;
-import pl.sternik.mb.linklinks.repositories.MonetaAlreadyExistsException;
-import pl.sternik.mb.linklinks.repositories.MonetyRepository;
 import pl.sternik.mb.linklinks.repositories.NoSuchGameException;
-import pl.sternik.mb.linklinks.repositories.NoSuchMonetaException;
 
 
 @Service
@@ -84,7 +79,7 @@ public class KlaserServiceGameJ8Impl implements KlaserServiceGames {
 
     @Override
     public List<Game> findAllToSell() {
-        return games.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.DO_SPRZEDANIA))
+        return games.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.TOSELL))
                 .collect(Collectors.toList());
     }
 }

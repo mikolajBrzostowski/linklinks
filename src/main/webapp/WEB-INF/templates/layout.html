@@ -5,14 +5,14 @@
 <head th:fragment="site-head">
 <title th:text="#{title.application}">Klaser</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" media="all" href="../../css/klaser.css" th:href="@{/css/klaser.css}" />
-<link rel="icon" href="../../imgages/coins.ico" th:href="@{/images/coins.ico}" />
+<link rel="stylesheet" type="text/css" media="all" href="../../css/collection.css" th:href="@{/css/collection.css}" />
+<link rel="icon" href="../../imgages/game.jpg" th:href="@{/images/game.jpg}" />
 </head>
 
 <body>
 
   <header th:fragment="site-header">
-    <a href="index.html" th:href="@{/}"><img src="../../images/klaser.jpg" th:src="@{/images/klaser.jpg}"/> </a> 
+    <a href="index.html" th:href="@{/}"><img src="../../images/games.png" th:src="@{/images/games.png}"/> </a> 
     <a href="klaser.html" th:href="@{/monety}">Wszystkie monety</a>
     <a href="tosell.html" th:href="@{/tosell}">Monety do sprzedania</a>
     <a href="moneta.html" th:href="@{/monety/create}">Dodaj monetę</a>
@@ -30,7 +30,7 @@
 
   <div>
     <h2 th:text="#{title.list}" style="display: inline;">Klaser monet</h2>    
-    <img src="../../images/klaser.jpg" alt="Klaser logo" title="Klaser logo" th:src="@{/images/klaser.jpg}"
+    <img src="../../images/games.png" alt="Klaser logo" title="Klaser logo" th:src="@{/images/games.png}"
       th:alt-title="#{title.application}" style="float: right;" /> 
     <p> A tu jakis kontent, raczje sie nie pokaże </p>
   </div>
