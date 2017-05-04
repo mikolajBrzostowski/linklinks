@@ -2,12 +2,15 @@ package pl.sternik.mb.linklinks.services;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.sternik.mb.linklinks.entities.Game;
+import pl.sternik.mb.linklinks.entities.Status;
 import pl.sternik.mb.linklinks.repositories.GameAlreadyExistsException;
 import pl.sternik.mb.linklinks.repositories.GamesRepository;
 import pl.sternik.mb.linklinks.repositories.NoSuchGameException;
@@ -29,6 +32,11 @@ public class CollectionServiceGamesImpl implements CollectionServiceGames {
     @Override
     public List<Game> findAllToSell() {
         return database.findAll();
+    }
+    
+    @Override
+    public List<Game> findAllDuplicates() {
+    	return database.findAll();
     }
 
     @Override

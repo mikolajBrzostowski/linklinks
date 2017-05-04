@@ -47,6 +47,11 @@ public class CollectionController {
     public List<Game> populateCoinsToSell() {
         return this.collectionService.findAllToSell();
     }
+    
+    @ModelAttribute("gamesDuplicated")
+    public List<Game> populateDuplicatedCoins() {
+        return this.collectionService.findAllDuplicates();
+    }
 
     @ModelAttribute("gamesLast3")
     public List<Game> populateLast3Coins() {
@@ -67,6 +72,11 @@ public class CollectionController {
     @RequestMapping("/tosell")
     public String showToSellPage() {
         return "tosell";
+    }
+    
+    @RequestMapping("/duplicates")
+    public String showDupicatesPage() {
+        return "duplicates";
     }
 
 }

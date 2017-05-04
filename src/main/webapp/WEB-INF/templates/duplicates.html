@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout ::site-head">
+<title>Title</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+  <header th:replace="layout :: site-header" />
+  <div>
+    <h2 th:text="#{title.duplicates}" style="display: inline;">Duplicates</h2>
+  </div>
+  
+  <div class="listOfGames" th:unless="${#lists.isEmpty(gamesAll)}">
+    <table>
+      <thead>
+        <tr>
+          <th th:text="#{collection.catalogNumber}">catalogNumber</th>
+          <th th:text="#{collection.name}">name</th>
+          <th th:text="#{collection.marketValue}">marketValue</th>
+          <th th:text="#{collection.description}">description</th>
+          <th th:text="#{collection.dateOfAcquisition}">dateOfAcquisition</th>
+          <th th:text="#{collection.languageVersion}">languageVersion</th>
+          <th th:text="#{collection.platformVersion}">platformVersion</th>
+          <th th:text="#{collection.status}">status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="game : ${gamesDuplicated}">
+          <form action="#" th:action="@{/games}" th:object="${game}" method="post">
+          <td th:text="${game.catalogNumber}">1</td>
+          <td th:text="${game.name}">Tekken</td>
+          <td th:text="${game.marketValue}">100</td>
+          <td th:text="${game.description}">Long description</td>
+          <td th:text="${{game.dateOfAcquisition}}">2016/08/08</td>
+          <td th:text="${{game.languageVersion}}">English</td>
+          <td th:text="${game.platformVersion}">PS4</td>
+          <td th:text="#{${'collection.status.' + game.status}}">New</td>
+          
+          </form>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

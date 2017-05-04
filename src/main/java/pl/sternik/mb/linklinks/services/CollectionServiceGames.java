@@ -19,4 +19,6 @@ public interface CollectionServiceGames {
     Optional<Boolean> deleteById(Long id);
 
     List<Game> findLatest3();
+    
+    List<Game> findAllDuplicates();
 }

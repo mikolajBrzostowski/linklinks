@@ -82,4 +82,10 @@ public class CollectionServiceGameJ8Impl implements CollectionServiceGames {
         return games.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.TOSELL))
                 .collect(Collectors.toList());
     }
+    
+    @Override
+    public List<Game> findAllDuplicates() {
+        return games.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.DUPLICATE))
+                .collect(Collectors.toList());
+    }
 }

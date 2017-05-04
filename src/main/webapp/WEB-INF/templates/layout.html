@@ -19,6 +19,7 @@
 	    <a href="collection.html" th:href="@{/games}" th:text="#{title.games}">All games</a>
 	    <a href="tosell.html" th:href="@{/tosell}" th:text="#{title.tosell}">Games to sell</a>
 	    <a href="game.html" th:href="@{/games/create}" th:text="#{title.new}">Add game</a>
+	    <a href="duplicates.html" th:href="@{/duplicates}" th:text="#{title.duplicates}">Add game</a>
     </div>
     
    <!--  Zalogowany: <b th:inline="text"> [[${#httpServletRequest.remoteUser}]] </b>  
@@ -41,7 +42,7 @@
   </div>
 
   <footer th:fragment="site-footer"> 
-  Mikolaj Brzostowski 2017
+  	Mikolaj Brzostowski <a href="https://github.com/mikolajBrzostowski/linklinks">Source code</a>
   </footer>
 
 </body>
