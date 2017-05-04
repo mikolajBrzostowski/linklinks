@@ -10,7 +10,7 @@
 
   <header th:replace="layout :: site-header" />
   <div>
-    <h2 th:text="#{title.list}" style="display: inline;">Collection of games</h2>
+    <h2 th:text="#{title.tosell}" style="display: inline;">Collection of games</h2>
   </div>
   
   <div class="listOfGames" th:unless="${#lists.isEmpty(gamesAll)}">
@@ -48,10 +48,7 @@
       </tbody>
     </table>
   </div>
-
-  <h1>Do sprzedania!</h1>
-  <p>tu bedzie</p>
-
+  
   <footer th:replace="layout :: site-footer" />
 
 </body>
