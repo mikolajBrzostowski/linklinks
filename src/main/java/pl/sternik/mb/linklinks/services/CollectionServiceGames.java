@@ -5,7 +5,7 @@ import java.util.Optional;
 import pl.sternik.mb.linklinks.entities.Game;
 
 
-public interface KlaserServiceGames {
+public interface CollectionServiceGames {
     List<Game> findAll();
 
     List<Game> findAllToSell();

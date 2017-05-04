@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layout ::site-head">
-<title>Title</title>
+<title th:text="#{title.application}">Game collection</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="../../css/collection.css" th:href="@{/css/collection.css}" />
 </head>
 
 <body>
-
   <header th:replace="layout :: site-header" />
   <div>
-    <h2 th:text="#{title.list}" style="display: inline;">Collection of games</h2>
+    <h2 th:text="#{title.tosell}" style="display: inline;">Collection of games</h2>
   </div>
   
   <div class="listOfGames" th:unless="${#lists.isEmpty(gamesAll)}">
@@ -29,7 +30,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="game : ${gamesToSell}">
+        <tr th:each="game : ${gamesAll}">
           <form action="#" th:action="@{/games}" th:object="${game}" method="post">
           <td th:text="${game.catalogNumber}">1</td>
           <td th:text="${game.name}">Tekken</td>
@@ -40,20 +41,17 @@
           <td th:text="${game.platformVersion}">PS4</td>
           <td th:text="#{${'collection.status.' + game.status}}">New</td>
           <td>
-            <button type="submit" name="buy" th:value="${game.catalogNumber}" 
-            th:text="#{collection.buy}">Buy</button>      
+            <button type="submit" name="remove" th:value="${game.catalogNumber}" 
+            th:text="#{collection.remove}">Dell</button>
+            
+            <a href="game.html" th:href="@{|/games/${game.catalogNumber}|}" >
+            <button type="button" th:text="#{collection.edit}">Edit</button></a>              
           </td>
           </form>
         </tr>
       </tbody>
     </table>
   </div>
-
-  <h1>Do sprzedania!</h1>
-  <p>tu bedzie</p>
-
   <footer th:replace="layout :: site-footer" />
-
 </body>
-
 </html>

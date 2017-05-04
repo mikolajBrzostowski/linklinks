@@ -18,6 +18,24 @@ public enum PlatfromVersion {
     N3DS("N3DS"),
     GBA("GBA"),
     GCN("GCN");
+	
+	public static final PlatfromVersion[] ALL = { 
+			PC,
+		    PS4,
+		    PS3,
+		    PS2,
+		    PS1,
+		    PSVITA,
+		    XBOXONE,
+		    XBOX360,
+		    XBOX,
+		    WII,
+		    NDS,
+		    WIIU,
+		    N3DS,
+		    GBA,
+		    GCN		};
+    
     
   
     private final String name;

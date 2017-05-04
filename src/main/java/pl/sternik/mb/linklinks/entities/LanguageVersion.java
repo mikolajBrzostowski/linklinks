@@ -16,6 +16,22 @@ public enum LanguageVersion {
     GERMAN("GERMAN"),
     FRENCH("FRENCH"),
     ITALIAN("ITALIAN");    
+	
+	public static final LanguageVersion[] ALL = { 
+			POLISH,
+		    ENGLISH,
+		    SPANISH,
+		    RUSSIAN,
+		    MANDARIN,
+		    HINDI,
+		    ARABIC,
+		    PORTUGUESE,
+		    BENGALI,
+		    JAPANESE,
+		    GERMAN,
+		    FRENCH,
+		    ITALIAN   };
+    
     
     
     private final String name;

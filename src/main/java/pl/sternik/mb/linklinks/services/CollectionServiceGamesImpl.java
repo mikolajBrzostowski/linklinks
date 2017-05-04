@@ -15,7 +15,7 @@ import pl.sternik.mb.linklinks.repositories.NoSuchGameException;
 
 @Service
 @Qualifier("tablica")
-public class KlaserServiceGamesImpl implements KlaserServiceGames {
+public class CollectionServiceGamesImpl implements CollectionServiceGames {
 
     @Autowired
     @Qualifier("tablica")

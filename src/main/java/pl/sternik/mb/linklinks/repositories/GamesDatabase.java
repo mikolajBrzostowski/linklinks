@@ -23,7 +23,7 @@ public class GamesDatabase implements GamesRepository {
         baza = new Game[15];
         Game m = new Game();
         m.setCatalogNumber(0L);
-        m.setMarketValue(new Long("99.9"));
+        m.setMarketValue(new Long("100"));
         m.setDescription("Nowa gra");
         m.setDateOfAcquisition(new Date());
         m.setLanguageVersion(LanguageVersion.POLISH);
@@ -33,7 +33,7 @@ public class GamesDatabase implements GamesRepository {
         
         m = new Game();
         m.setCatalogNumber(2L);
-        m.setMarketValue(new Long("99.9"));
+        m.setMarketValue(new Long("110"));
         m.setDescription("Używana w bardzo dobrym stanie");
         m.setDateOfAcquisition(new Date());
         m.setLanguageVersion(LanguageVersion.ENGLISH);

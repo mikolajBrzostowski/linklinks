@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout ::site-head">
+<title th:text="#{title.application}">Game collection</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="../../css/collection.css" th:href="@{/css/collection.css}" />
+</head>
+
+<body>
+  <header th:replace="layout :: site-header" />
+             
+  <div>
+ 
+    <form action="#" th:action="@{/games}" th:object="${game}" method="post">
+
+      <fieldset>
+
+        <legend th:text="#{collection.game.data}">Starter Data</legend>
+
+        <ul th:if="${#fields.hasErrors('*')}" class="errorlist">
+          <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+        </ul>
+        
+        <div>
+          <label for="catalogNumber"> <span th:text="#{collection.catalogNumber}">numer</span>
+          </label> <input type="text" th:field="*{catalogNumber}" th:errorclass="fieldError" />
+        </div>
+        <div>
+          <label for="name"> <span th:text="#{collection.name}">name</span>
+          </label> <input type="text" th:field="*{name}" th:errorclass="fieldError" />
+          <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect name</span>
+        </div>
+		<div>
+          <label for="marketValue"> <span th:text="#{collection.marketValue}">marketValue</span>
+          </label> <input type="text" th:field="*{marketValue}" th:errorclass="fieldError" />
+        </div>
+        <div>
+          <label for="description"> <span th:text="#{collection.description}">description</span>
+          </label> <input type="text" th:field="*{description}" th:errorclass="fieldError" />
+        </div>
+        <div>
+          <label for="dateOfAcquisition"> <span th:text="#{collection.dateOfAcquisition}">dateOfAcquisition</span>
+          </label> <input type="text" th:field="*{dateOfAcquisition}" th:errorclass="fieldError" />
+        </div>
+        <div>
+          <label for="languageVersion"> <span th:text="#{collection.languageVersion}">languageVersion</span></label>
+          	<select th:field="*{languageVersion}" th:errorclass="fieldError">
+              <option th:each="lv : ${languageVersionAll}" th:value="${lv}" th:text="#{${'collection.languageVersion.' + lv}}">New</option>
+            </select>
+        </div>
+        <div>
+          <label for="platformVersion"> <span th:text="#{collection.platformVersion}">platformVersion</span></label>  
+          	<select th:field="*{platformVersion}" th:errorclass="fieldError">
+              <option th:each="pv : ${platformVersionAll}" th:value="${pv}" th:text="#{${'collection.platformVersion.' + pv}}">New</option>
+            </select>      
+        </div>
+        <div>
+          <label for="status"> <span th:text="#{collection.status}">status</span></label>
+            <select th:field="*{status}" th:errorclass="fieldError">
+              <option th:each="st : ${statusAll}" th:value="${st}" th:text="#{${'collection.status.' + st}}">New</option>
+            </select>          
+        </div>
+        <div class="submit">          
+            <button th:if="*{catalogNumber}" type="submit" name="save" th:value="*{catalogNumber}" >Save</button>
+         
+         
+            <button th:unless="*{catalogNumber}" type="submit" name="create" >Save</button>            
+            
+            
+            <a href="collection.html" th:href="@{/games}" ><button type="button">Cancel</button></a>            
+        </div>
+
+      </fieldset>
+
+    </form>
+
+  </div>
+  <footer th:replace="layout :: site-footer" />
+</body>
+</html>

@@ -23,45 +23,57 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import pl.sternik.mb.linklinks.entities.Game;
+import pl.sternik.mb.linklinks.entities.LanguageVersion;
+import pl.sternik.mb.linklinks.entities.PlatfromVersion;
 import pl.sternik.mb.linklinks.entities.Status;
-import pl.sternik.mb.linklinks.services.KlaserServiceGames;
+import pl.sternik.mb.linklinks.services.CollectionServiceGames;
 import pl.sternik.mb.linklinks.services.NotificationService;
 
 @Controller
 public class GamesController {
 	
 	@Autowired
-	private KlaserServiceGames klaserService;
+	private CollectionServiceGames collectionService;
 	
 	@Autowired
     private NotificationService notifyService;
 	
-	@ModelAttribute("statsyAll")
+	@ModelAttribute("statusAll")
 	public List<Status> populateStatusy() {
 		return Arrays.asList(Status.ALL);		
 	}
 	
-	 @GetMapping(value = "/games/{id}")
-	    public String view(@PathVariable("id") Long id, final ModelMap model) {
-	        Optional<Game> result;
-	        result = klaserService.findById(id);
-	        if (result.isPresent()) {
-	        	Game game = result.get();
-	            model.addAttribute("game", game);
-	            return "game";
-	        } else {
-	            notifyService.addErrorMessage("Cannot find game #" + id);
-	            model.clear();
-	            return "redirect:/games";
-	        }
-	    }
+	@ModelAttribute("languageVersionAll")
+	public List<LanguageVersion> populateLanguages() {
+		return Arrays.asList(LanguageVersion.ALL);		
+	}
+	
+	@ModelAttribute("platformVersionAll")
+	public List<PlatfromVersion> populatePlatforms() {
+		return Arrays.asList(PlatfromVersion.ALL);		
+	}
+	
+	@RequestMapping(value = "/games/{id}", method = RequestMethod.GET)
+    public String view(@PathVariable("id") Long id, final ModelMap model) {
+        Optional<Game> result;
+        result = collectionService.findById(id);
+        if (result.isPresent()) {                                                
+        	Game game = result.get();
+            model.addAttribute("game", game);
+            return "game";
+        } else {
+            notifyService.addErrorMessage("Cannot find game #" + id);
+            model.clear();
+            return "redirect:/games";
+        }
+    }
 	 
 	 
 	 @RequestMapping(value = "/games/{id}/json", produces = "application/json", method = RequestMethod.GET)
 	    @ResponseBody
 	    public ResponseEntity<Game> viewAsJson(@PathVariable("id") Long id, final ModelMap model) {
 	        Optional<Game> result;
-	        result = klaserService.findById(id);
+	        result = collectionService.findById(id);
 	        if (result.isPresent()) {
 	        	Game game = result.get();
 	            return new ResponseEntity<Game>(game, HttpStatus.OK);
@@ -74,51 +86,56 @@ public class GamesController {
 	 
 	 
 	    @RequestMapping(value = "/games", params = { "save" }, method = RequestMethod.POST)
-	    public String saveMoneta(Game game, BindingResult bindingResult, ModelMap model) {
+	    public String saveGame(Game game, BindingResult bindingResult, ModelMap model) {
 
 	        if (bindingResult.hasErrors()) {
 	            notifyService.addErrorMessage("Please fill the form correctly!");
 	            return "game";
 	        }
-	        Optional<Game> result = klaserService.edit(game);
+	        Optional<Game> result = collectionService.edit(game);
 	        if (result.isPresent())
-	            notifyService.addInfoMessage("Zapis udany");
+	            notifyService.addInfoMessage("Save succeded");
 	        else
-	            notifyService.addErrorMessage("Zapis NIE udany");
+	            notifyService.addErrorMessage("Save failed");
 	        model.clear();
-	        return "redirect:/monety";
-	    }
-	    
+	        return "redirect:/games";
+	    }	    
 	    
 
 	    @RequestMapping(value = "/games", params = { "create" }, method = RequestMethod.POST)
-	    public String createMoneta(Game game, BindingResult bindingResult, ModelMap model) {
+	    public String createGame(Game game, BindingResult bindingResult, ModelMap model) {
 	        if (bindingResult.hasErrors()) {
 	            notifyService.addErrorMessage("Please fill the form correctly!");
-	            return "moneta";
+	            return "game";
 	        }
-	        klaserService.create(game);
+	        collectionService.create(game);
 	        model.clear();
-	        notifyService.addInfoMessage("Zapis nowej udany");
+	        notifyService.addInfoMessage("Save succeded");
 	        return "redirect:/games";
 	    }
-
-
 	    
 
 	    @RequestMapping(value = "/games", params = { "remove" }, method = RequestMethod.POST)
 	    public String removeRow(final Game game, final BindingResult bindingResult, final HttpServletRequest req) {
 	        final Integer rowId = Integer.valueOf(req.getParameter("remove"));
-	        Optional<Boolean> result = klaserService.deleteById(rowId.longValue());
+	        Optional<Boolean> result = collectionService.deleteById(rowId.longValue());
+	        return "redirect:/games";
+	    }
+	    
+	    
+	    @RequestMapping(value = "/games", params = { "buy" }, method = RequestMethod.POST)
+	    public String buyGame(final Game game, final BindingResult bindingResult, final HttpServletRequest req) {
+	        final Integer rowId = Integer.valueOf(req.getParameter("buy"));
+	        Optional<Boolean> result = collectionService.deleteById(rowId.longValue());
+	        notifyService.addInfoMessage("Withdrawing money from your account");
 	        return "redirect:/games";
 	    }
 
 
 	    @RequestMapping(value = "/games/create", method = RequestMethod.GET)
 	    public String showMainPages(final Game game) {
-	        // Ustawiamy date nowej monety, na dole strony do dodania
 	        game.setDateOfAcquisition(Calendar.getInstance().getTime());
-	        return "moneta";
+	        return "game";
 	    }
 	    
 	    

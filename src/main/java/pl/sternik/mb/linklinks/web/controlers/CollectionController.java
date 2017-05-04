@@ -19,39 +19,39 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.sternik.mb.linklinks.entities.Game;
 import pl.sternik.mb.linklinks.entities.Status;
-import pl.sternik.mb.linklinks.services.KlaserServiceGames;
+import pl.sternik.mb.linklinks.services.CollectionServiceGames;
 import pl.sternik.mb.linklinks.services.NotificationService;
 
 
 @Controller
-public class KlaserGameController {
+public class CollectionController {
 
     @Autowired
     // @Qualifier("spring")
-    private KlaserServiceGames klaserService;
+    private CollectionServiceGames collectionService;
 
     @Autowired
     private NotificationService notificationService;
 
-//    @ModelAttribute("statusyAll")
-//    public List<Status> populateStatusy() {
-//        return Arrays.asList(Status.ALL);
-//    }
-
-    @ModelAttribute("coinsAll")
-    public List<Game> populateCoins() {
-        return this.klaserService.findAll();
+    @ModelAttribute("statusAll")
+    public List<Status> populateStatusy() {
+        return Arrays.asList(Status.ALL);
     }
 
-//    @ModelAttribute("coinsToSell")
-//    public List<Moneta> populateCoinsToSell() {
-//        return this.klaserService.findAllToSell();
-//    }
+    @ModelAttribute("gamesAll")
+    public List<Game> populateCoins() {
+        return this.collectionService.findAll();
+    }
 
-//    @ModelAttribute("coinsLast3")
-//    public List<Moneta> populateLast3Coins() {
-//        return this.klaserService.findLatest3();
-//    }
+    @ModelAttribute("gamesToSell")
+    public List<Game> populateCoinsToSell() {
+        return this.collectionService.findAllToSell();
+    }
+
+    @ModelAttribute("gamesLast3")
+    public List<Game> populateLast3Coins() {
+        return this.collectionService.findLatest3();
+    }
 
     @RequestMapping({ "/", "/index" })
     public String index(Model model) {
@@ -61,7 +61,7 @@ public class KlaserGameController {
     @RequestMapping(value = "/games", method = RequestMethod.GET)
     public String showMainPage(Model model) {
         model.addAttribute("MyMessages",  notificationService.getNotificationMessages());
-        return "klaser";
+        return "collection";
     }
 
     @RequestMapping("/tosell")

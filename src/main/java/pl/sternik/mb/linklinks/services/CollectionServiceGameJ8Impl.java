@@ -18,7 +18,7 @@ import pl.sternik.mb.linklinks.repositories.NoSuchGameException;
 
 @Service
 @Primary
-public class KlaserServiceGameJ8Impl implements KlaserServiceGames {
+public class CollectionServiceGameJ8Impl implements CollectionServiceGames {
 
     @Autowired
     @Qualifier("lista")
