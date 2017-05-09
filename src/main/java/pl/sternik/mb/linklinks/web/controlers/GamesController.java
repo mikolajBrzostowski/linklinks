@@ -90,6 +90,7 @@ public class GamesController {
 
 	        if (bindingResult.hasErrors()) {
 	            notifyService.addErrorMessage("Please fill the form correctly!");
+	            model.addAttribute("MyMessages", notifyService.getNotificationMessages());
 	            return "game";
 	        }
 	        Optional<Game> result = collectionService.edit(game);
@@ -106,6 +107,7 @@ public class GamesController {
 	    public String createGame(Game game, BindingResult bindingResult, ModelMap model) {
 	        if (bindingResult.hasErrors()) {
 	            notifyService.addErrorMessage("Please fill the form correctly!");
+	            model.addAttribute("MyMessages", notifyService.getNotificationMessages());
 	            return "game";
 	        }
 	        collectionService.create(game);
