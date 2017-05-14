@@ -23,7 +23,7 @@
 	<bean id="jpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<!-- To dla heroku  -->
-		<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
+		<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" /> 
 		<!-- To dla H2 -->
 		<!-- <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect" /> -->
 		<property name="generateDdl" value="false" />
@@ -34,8 +34,8 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<!-- to dla heroku 2 linijki -->
-		 <property name="dataSource" ref="dataSource" />
-		 <property name="persistenceUnitName" value="springData-postgres"></property>
+		<property name="dataSource" ref="dataSource" />
+		<property name="persistenceUnitName" value="springData-postgres"></property>
 		<!-- to lokalnie dla h2 -->
 		<!-- <property name="persistenceUnitName" value="springData-h2"></property> -->
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
@@ -56,7 +56,7 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- konfig hroku db -->
-
+	
 	 <bean class="java.net.URI" id="dbUrl">
 		<constructor-arg value="#{systemEnvironment['DATABASE_URL']}" />
 	</bean>

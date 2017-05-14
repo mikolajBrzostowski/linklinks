@@ -34,6 +34,7 @@ import pl.sternik.mb.linklinks.services.NotificationService;
 public class GamesController {
 	
 	@Autowired
+	@Qualifier("spring-data")
 	private CollectionServiceGames collectionService;
 	
 	@Autowired
