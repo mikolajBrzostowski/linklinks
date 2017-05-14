@@ -2,29 +2,36 @@ package pl.sternik.mb.linklinks.entities;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.validator.constraints.NotEmpty;
 
+
+@Entity
+@XmlRootElement
 public class Game {
 
-//  @NotNull
-//  @Id
+    @NotNull
+    @Id
 	private Long catalogNumber;
-//	@NotNull
+	@NotEmpty
 	private String name;	
-//	@NotNull
+	@NotNull
 	private Long marketValue;	
 //	@Size(min=2, max=30, message = "{Size.moneta.opis}")
-//	@Size(min=2, max=30, message = "Opis should be in the range [{min}...{max}]")
+	@Size(min=2, max=30, message = "Opis should be in the range [{min}...{max}]")
 	private String description;
-//	@NotNull
+	@NotNull
 	private Date dateOfAcquisition;
-//	@NotEmpty
+	@NotNull
 	private LanguageVersion languageVersion;
-//	@NotNull
+	@NotNull
 	private PlatfromVersion platformVersion;
-//	@NotNull
+	@NotNull
 	private Status status;
 	
 	

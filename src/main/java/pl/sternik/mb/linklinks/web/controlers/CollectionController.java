@@ -27,7 +27,7 @@ import pl.sternik.mb.linklinks.services.NotificationService;
 public class CollectionController {
 
     @Autowired
-    // @Qualifier("spring")
+    @Qualifier("spring-data")
     private CollectionServiceGames collectionService;
 
     @Autowired
