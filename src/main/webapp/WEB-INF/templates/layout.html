@@ -13,7 +13,8 @@
 
   <header th:fragment="site-header">
     <div>
-    	<a href="index.html" th:href="@{/}"><img src="../../images/games.png" th:src="@{/images/games.png}" class="gamesImage"/> </a> 
+    	<a href="index.html" th:href="@{/}"><img src="../../images/games.png" th:src="@{/images/games.png}" class="gamesImage"/> </a>
+    	<a href="../logout" style="display: inline;"/>LOGOUT</a>
     </div>
     <div id="headerButtons">
 	    <a href="collection.html" th:href="@{/games}" th:text="#{title.games}">All games</a>
